@@ -1,0 +1,22 @@
+version: "3.9"
+services: 
+  booking-db:
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongoroot
+      - MONGO_INITDB_ROOT_PASSWORD=mongopwd
+      - MONGO_INITDB_DATABASE=booking_services
+    ports: 
+      - "27017:27017"
+    volumes: 
+      - db:/data/db
+      - config:/data/configdb
+    networks:
+      booking-services-network:
+        aliases:
+          - booking-db-host
+volumes: 
+  db:
+  config:
+networks: 
+  booking-services-network:
