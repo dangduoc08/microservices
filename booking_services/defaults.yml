@@ -1,0 +1,10 @@
+server:
+  port: 3002
+
+databases:
+  mongodb:
+    uri: mongodb://mongoroot:mongopwd@127.0.0.1:27017/booking_services?authSource=admin&readPreference=primary&directConnection=true&ssl=false
+
+services:
+  users:
+    url: http://localhost:3001

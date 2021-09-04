@@ -1,0 +1,14 @@
+scalar Date
+
+type Booking {
+  _id: ID!
+  customerID: ID!
+  status: String
+  note: String
+  createdAt: Date
+  updatedAt: Date
+}
+
+type Query {
+  bookings(limit: String!, offset: String!): [Booking]!
+}

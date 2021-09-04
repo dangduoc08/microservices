@@ -1,9 +1,14 @@
-service:
-  port: 3000
+server:
+  port: 3001
 
 database:
-  host: 127.0.0.1
-  port: 5432
-  user: postgresroot
-  pwd: postgrespwd
-  db: user_services
+  postgres:
+    host: 127.0.0.1
+    port: 5432
+    user: postgresroot
+    pwd: postgrespwd
+    db: user_services
+
+services:
+  bookings:
+    url: http://localhost:3002

@@ -25,27 +25,19 @@ export interface ServerConfiguration {
 }
 
 export interface DatabaseConfiguration {
-  postgres: PostgresConfiguration
+  mongodb: MongoDBConfiguration
 }
 
-export interface PostgresConfiguration {
-  host: string
-  port: number
-  user: string
-  pwd: string
-  db: string
+export interface MongoDBConfiguration {
+  uri: string
 }
 
 export interface ServicesConfiguration {
-  bookings: BookingsConfiguration
+  users: UsersConfiguration
 }
 
-export interface BookingsConfiguration {
+export interface UsersConfiguration {
   url: string
-}
-
-export interface ServiceConfiguration {
-  port: number
 }
 
 export const configuration = (): Configuration => {

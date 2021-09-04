@@ -12,14 +12,14 @@ import {
   GraphQLModule
 } from '@nestjs/graphql'
 import {
-  SequelizeModule
-} from '@nestjs/sequelize'
+  MongooseModule
+} from '@nestjs/mongoose'
 import {
-  UsersModule
-} from './users'
+  BookingsModule
+} from './bookings'
 import {
   configuration,
-  PostgresConfiguration
+  MongoDBConfiguration
 } from './configuration'
 
 @Module({
@@ -37,21 +37,14 @@ import {
       ignoreEnvFile: true,
       cache: true
     }),
-    SequelizeModule.forRootAsync({
+    MongooseModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
-        dialect: 'postgres',
-        host: configService.get<PostgresConfiguration>('database.postgres')?.host,
-        port: configService.get<PostgresConfiguration>('database.postgres')?.port,
-        username: configService.get<PostgresConfiguration>('database.postgres')?.user,
-        password: configService.get<PostgresConfiguration>('database.postgres')?.pwd,
-        database: configService.get<PostgresConfiguration>('database.postgres')?.db,
-        autoLoadModels: true,
-        synchronize: true
+        uri: configService.get<MongoDBConfiguration>('databases.mongodb')?.uri
       })
     }),
-    UsersModule
+    BookingsModule
   ]
 })
 export class AppModule { }

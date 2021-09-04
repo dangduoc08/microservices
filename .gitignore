@@ -34,3 +34,5 @@ package-lock.json
 
 # MAC OS
 .DS_Store
+
+graphql.ts

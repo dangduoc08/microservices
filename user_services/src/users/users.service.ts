@@ -62,7 +62,7 @@ export class UsersService {
     return userModels?.[0] ?? null
   }
 
-  public deleteUser(id: string): Promise<void> {
+  public async deleteUser(id: string): Promise<void> {
     return this.usersModel.sequelize.query(
       `DELETE FROM ${UsersModel.getTableName()} WHERE id = '${id}'`,
       {
@@ -70,6 +70,4 @@ export class UsersService {
       }
     )
   }
-
-
 }
