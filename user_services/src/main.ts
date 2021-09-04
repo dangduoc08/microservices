@@ -5,6 +5,9 @@ import {
   VersioningType
 } from '@nestjs/common'
 import {
+  ConfigService
+} from '@nestjs/config'
+import {
   AppModule
 } from './app.module'
 import {
@@ -21,9 +24,14 @@ async function main() {
     type: VersioningType.URI
   })
 
+  const configService = app.get(ConfigService)
+  const serviceConfig = configService.get('service')
+
   app.useGlobalPipes(new AppValidationPipe())
   app.useGlobalFilters(new ResponseErrorFilter())
-  app.listen(3000)
+
+
+  app.listen(serviceConfig.port)
 }
 
 main()

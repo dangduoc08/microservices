@@ -10,9 +10,9 @@ import {
 import {
   UsersService
 } from './users.service'
-// import {
-//   UserResolver
-// } from './user.resolver'
+import {
+  UsersResolver
+} from './users.resolver'
 import {
   UsersModel
 } from './users.model'
@@ -28,7 +28,7 @@ import {
   ],
   providers: [
     UsersService,
-    // UserResolver
+    UsersResolver
   ]
 })
 export class UsersModule { }

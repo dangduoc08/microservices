@@ -19,14 +19,18 @@ import {
 } from './users'
 import {
   configuration,
-  PostgresConfiguration
+  DatabaseConfiguration
 } from './configuration'
 
 @Module({
   imports: [
-    // GraphQLModule.forRoot({
-    //   autoSchemaFile: join(process.cwd(), 'src/schema.gql')
-    // }),
+    GraphQLModule.forRoot({
+      typePaths: ['src/**/*.gql'],
+      definitions: {
+        path: join(__dirname, 'graphql.ts'),
+        outputAs: 'interface'
+      }
+    }),
     ConfigModule.forRoot({
       load: [configuration],
       isGlobal: true,
@@ -38,11 +42,11 @@ import {
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
         dialect: 'postgres',
-        host: configService.get<PostgresConfiguration>('database')?.host,
-        port: configService.get<PostgresConfiguration>('database')?.port,
-        username: configService.get<PostgresConfiguration>('database')?.user,
-        password: configService.get<PostgresConfiguration>('database')?.pwd,
-        database: configService.get<PostgresConfiguration>('database')?.db,
+        host: configService.get<DatabaseConfiguration>('database')?.host,
+        port: configService.get<DatabaseConfiguration>('database')?.port,
+        username: configService.get<DatabaseConfiguration>('database')?.user,
+        password: configService.get<DatabaseConfiguration>('database')?.pwd,
+        database: configService.get<DatabaseConfiguration>('database')?.db,
         autoLoadModels: true,
         synchronize: true
       })

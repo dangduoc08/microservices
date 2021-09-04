@@ -16,10 +16,10 @@ const yamlConfigFiles = [
 
 export interface Configuration {
   service: ServiceConfiguration,
-  database: PostgresConfiguration
+  database: DatabaseConfiguration
 }
 
-export interface PostgresConfiguration {
+export interface DatabaseConfiguration {
   host: string
   port: number
   user: string
