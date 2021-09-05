@@ -14,7 +14,7 @@ import {
   BookingsService
 } from './bookings.service'
 import {
-  Bookings
+  Bookings as BookingsModel
 } from './bookings.schema'
 import {
   TransformGetBookingsQuery
@@ -49,7 +49,7 @@ export class BookingsController {
   @Get()
   public async getBookings(
     @Query() { limit, offset }: GetBookingsQueryDTO
-  ): Promise<{ bookings: Bookings[] } | void> {
+  ): Promise<{ bookings: BookingsModel[] } | void> {
     try {
       const bookings = await this.bookingsService.getBookings(limit, offset)
 
@@ -62,7 +62,7 @@ export class BookingsController {
   @Get(':id')
   public async getBooking(
     @Param() { id }: GetBookingParamDTO
-  ): Promise<{ booking: Bookings | null } | void> {
+  ): Promise<{ booking: BookingsModel | null } | void> {
     try {
       const booking = await this.bookingsService.getBookingByID(id)
 
@@ -76,7 +76,7 @@ export class BookingsController {
   public async updateBooking(
     @Param() { id }: UpdateBookingParamDTO,
     @Body() { status = '' }: UpdateBookingBodyDTO
-  ): Promise<{ booking: Bookings | null } | void> {
+  ): Promise<{ booking: BookingsModel | null } | void> {
     try {
       const booking = await this.bookingsService.updateBookingStatus(id, status)
 

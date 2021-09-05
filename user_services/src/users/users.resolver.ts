@@ -10,19 +10,27 @@ import {
   UsersService
 } from './users.service'
 import {
-  GetUsersQueryDTO
+  UsersArgsDTO,
+  GetUserParamDTO
 } from './dtos'
 
-@Resolver('Users')
+@Resolver('User')
 export class UsersResolver {
   constructor(
     private readonly usersService: UsersService
   ) { }
 
-  @Query()
-  async users(
-    @Args() { limit, offset }: GetUsersQueryDTO
+  @Query('users')
+  public async getUsers(
+    @Args() { limit, offset }: UsersArgsDTO
   ): Promise<UsersModel[]> {
     return this.usersService.getUsers(limit, offset)
+  }
+
+  @Query('user')
+  public async getUserByID(
+    @Args() { id }: GetUserParamDTO
+  ): Promise<UsersModel> {
+    return await this.usersService.getUserByID(id)
   }
 }

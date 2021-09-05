@@ -2,13 +2,22 @@ scalar Date
 
 type Booking {
   _id: ID!
-  customerID: ID!
+  customerID: User
   status: String
   note: String
   createdAt: Date
   updatedAt: Date
 }
 
+type User {
+  id: ID!
+  full_name: String
+  phone_number: String
+  nation_code: String
+  created_at: Date
+  updated_at: Date
+}
+
 type Query {
-  bookings(limit: String!, offset: String!): [Booking]!
+  bookings(limit: Int!, offset: Int!): [Booking]!
 }

@@ -1,28 +1,51 @@
 import {
   Resolver,
   Query,
-  Args
+  Args,
+  Parent,
+  ResolveField
 } from '@nestjs/graphql'
 import {
-  Bookings
+  Bookings as BookingsModel
 } from './bookings.schema'
 import {
   BookingsService
 } from './bookings.service'
 import {
-  GetBookingsQueryDTO
+  GetBookingsArgsDTO
 } from './dtos'
+import {
+  ServicesService
+} from '../services'
+import {
+  UsersModel
+} from '../services/users'
 
 @Resolver('Booking')
 export class BookingsResolver {
   constructor(
-    private readonly bookingsService: BookingsService
+    private readonly bookingsService: BookingsService,
+    private readonly servicesService: ServicesService
   ) { }
 
-  @Query()
-  async bookings(
-    @Args() { limit, offset }: GetBookingsQueryDTO
-  ): Promise<Bookings[]> {
+  @Query('bookings')
+  public async getBookings(
+    @Args() { limit, offset }: GetBookingsArgsDTO
+  ): Promise<BookingsModel[]> {
     return this.bookingsService.getBookings(limit, offset)
+  }
+
+  @ResolveField('customerID')
+  public getCustomer(
+    @Parent() { customerID }: BookingsModel
+  ): Promise<UsersModel> {
+    const services = this.servicesService.new()
+    const usersService = services?.select('users')
+
+    return new Promise((resolve) => {
+      usersService?.getUserById(customerID.toString()).subscribe(next => {
+        resolve(next.data.user)
+      })
+    })
   }
 }

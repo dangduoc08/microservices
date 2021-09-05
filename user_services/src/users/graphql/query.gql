@@ -10,5 +10,6 @@ type User {
 }
 
 type Query {
-  users(limit: String!, offset: String!): [User]!
+  users(limit: Int!, offset: Int!): [User]!
+  user(id: ID!): User
 }

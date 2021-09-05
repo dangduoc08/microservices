@@ -16,7 +16,7 @@ export class ResponseErrorFilter implements ExceptionFilter {
     const statusCode: number = HttpStatus[code]
       ? code
       : HttpStatus.INTERNAL_SERVER_ERROR
-console.log(exception)
+
     const errorMessage: string = exception?.message || 'Unknown error'
 
     const errorRes: Record<string, { [key: string]: string }> = {

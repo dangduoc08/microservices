@@ -17,12 +17,16 @@ import {
   Bookings,
   BookingsSchema
 } from './bookings.schema'
+import {
+  ServicesModule
+} from '../services'
 
 @Module({
   imports: [
     MongooseModule.forFeature([
       { name: Bookings.name, schema: BookingsSchema }
-    ])
+    ]),
+    ServicesModule
   ],
   controllers: [
     BookingsController

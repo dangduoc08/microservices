@@ -48,7 +48,10 @@ import {
         password: configService.get<PostgresConfiguration>('database.postgres')?.pwd,
         database: configService.get<PostgresConfiguration>('database.postgres')?.db,
         autoLoadModels: true,
-        synchronize: true
+        synchronize: true,
+        define: {
+          underscored: true
+        }
       })
     }),
     UsersModule

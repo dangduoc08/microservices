@@ -2,7 +2,8 @@ import {
   GetUserParamDTO
 } from './get_user.dto'
 import {
-  GetUsersQueryDTO
+  GetUsersQueryDTO,
+  UsersArgsDTO
 } from './get_users.dto'
 import {
   UpdateUserParamDTO,
@@ -14,6 +15,7 @@ import {
 
 export {
   GetUsersQueryDTO,
+  UsersArgsDTO,
   GetUserParamDTO,
   UpdateUserParamDTO,
   UpdateUserBodyDTO,

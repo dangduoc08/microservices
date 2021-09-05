@@ -2,7 +2,8 @@ import {
   GetBookingParamDTO
 } from './get_booking.dto'
 import {
-  GetBookingsQueryDTO
+  GetBookingsQueryDTO,
+  GetBookingsArgsDTO
 } from './get_bookings.dto'
 import {
   UpdateBookingParamDTO,
@@ -17,5 +18,6 @@ export {
   GetBookingParamDTO,
   UpdateBookingParamDTO,
   UpdateBookingBodyDTO,
-  DeleteBookingParamDTO
+  DeleteBookingParamDTO,
+  GetBookingsArgsDTO
 }
