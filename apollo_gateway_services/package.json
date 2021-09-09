@@ -1,0 +1,69 @@
+{
+  "name": "microservices-user_services",
+  "version": "0.0.1",
+  "private": false,
+  "license": "UNLICENSED",
+  "author": {
+    "name": "Ta Dang Duoc",
+    "email": "duoc200894@gmail.com",
+    "url": "https://github.com/dangduoc08/microservices/tree/master/apollo_gateway_services"
+  },
+  "scripts": {
+    "clean:prod": "rimraf *dist/*",
+    "prebuild": "yarn --silent clean:prod",
+    "build": "tsc -p tsconfig.prod.json",
+    "dev": "nodemon",
+    "start": "node dist/main.js",
+    "eslint": "eslint \"src/**/*.{js,ts,jsx,tsx}\""
+  },
+  "engines": {
+    "node": "=16.8.0",
+    "npm": "=7.21.0",
+    "yarn": "=1.22.11"
+  },
+  "dependencies": {
+    "@apollo/gateway": "=0.40.0",
+    "@nestjs/axios": "=0.0.1",
+    "@nestjs/common": "=8.0.6",
+    "@nestjs/config": "=1.0.1",
+    "@nestjs/core": "=8.0.6",
+    "@nestjs/graphql": "=9.0.2",
+    "@nestjs/platform-express": "=8.0.6",
+    "apollo-server-express": "=3.3.0",
+    "axios": "=0.21.3",
+    "class-transformer": "=0.4.0",
+    "class-validator": "=0.13.1",
+    "express": "=4.17.1",
+    "graphql": "=15.5.2",
+    "js-yaml": "=4.1.0",
+    "ts-morph": "=12.0.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "=4.0.3",
+    "@types/node": "=16.7.8",
+    "@types/validator": "=13.6.3",
+    "@types/ws": "=7.4.7",
+    "@typescript-eslint/eslint-plugin": "=4.30.0",
+    "@typescript-eslint/parser": "=4.30.0",
+    "eslint": "=7.32.0",
+    "husky": "=7.0.2",
+    "lint-staged": "=11.1.2",
+    "nodemon": "=2.0.12",
+    "reflect-metadata": "=0.1.13",
+    "rimraf": "=3.0.2",
+    "rxjs": "=7.3.0",
+    "ts-node": "=10.1.0",
+    "tslib": "=2.3.1",
+    "typescript": "=4.4.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": [
+      "eslint"
+    ]
+  }
+}

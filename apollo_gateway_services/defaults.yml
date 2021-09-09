@@ -1,0 +1,9 @@
+server:
+  port: 3000
+  
+services:
+  bookings:
+    url: http://localhost:3002
+  users:
+    url: http://localhost:3001
+
