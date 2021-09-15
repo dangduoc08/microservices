@@ -30,6 +30,7 @@ async function main() {
   app.useGlobalPipes(new AppValidationPipe())
   app.useGlobalFilters(new ResponseErrorFilter())
 
+  console.log('aaa')
 
   app.listen(server.port)
 }
